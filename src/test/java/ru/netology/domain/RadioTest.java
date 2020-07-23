@@ -17,7 +17,7 @@ class RadioTest {
     public void shouldChangeNextStation() {
         Radio radio = new Radio();
         radio.setOn(true);
-        radio.setCurrentStation(1);
+        radio.setCurrentStation(8);
         int stationBeforeNext = radio.getCurrentStation();
         radio.changeNextStation();
         assertEquals(stationBeforeNext + 1, radio.getCurrentStation());
@@ -27,7 +27,7 @@ class RadioTest {
     public void shouldChangePrevStation() {
         Radio radio = new Radio();
         radio.setOn(true);
-        radio.setCurrentStation(9);
+        radio.setCurrentStation(1);
         int stationBeforePrev = radio.getCurrentStation();
         radio.changePrevStation();
         assertEquals(stationBeforePrev - 1, radio.getCurrentStation());
@@ -48,7 +48,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setOn(true);
         radio.setCurrentStation(0);
-        int minStationBeforePrev = 9;
+        int minStationBeforePrev = radio.getFinalStation();
         radio.changePrevStation();
         assertEquals(minStationBeforePrev, radio.getCurrentStation());
     }
