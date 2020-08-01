@@ -6,6 +6,13 @@ public class Radio {
     private int currentVolume;
     private boolean on;
 
+    public Radio() {
+    }
+
+    public Radio(int stationQuantity) {
+        this.stationQuantity = stationQuantity;
+    }
+
     public int getCurrentStation() {
         return currentStation;
     }

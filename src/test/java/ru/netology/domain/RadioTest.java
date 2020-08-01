@@ -5,19 +5,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    Radio radio = new Radio();
+    Radio radio = new Radio(9);
 
     @Test
-    public void shouldCheckMinStationQuantity() {
+    public void shouldCheckSetStationQuantity() {
         radio.setOn(true);
-        radio.setStationQuantity(0);
-        assertEquals(10, radio.getStationQuantity());
+        assertEquals(9, radio.getStationQuantity());
     }
 
     @Test
     public void shouldCheckMaxCurrentStation() {
         radio.setOn(true);
-        radio.setStationQuantity(9);
         int maxCurrentStation = radio.getStationQuantity() - 1;
         assertEquals(maxCurrentStation, radio.getStationQuantity()-1);
     }
@@ -25,7 +23,6 @@ class RadioTest {
     @Test
     public void shouldChangeNextStation() {
         radio.setOn(true);
-        radio.setStationQuantity(9);
         radio.setCurrentStation(7);
         int stationBeforeNext = radio.getCurrentStation();
         radio.changeNextStation();
@@ -35,7 +32,6 @@ class RadioTest {
     @Test
     public void shouldChangePrevStation() {
         radio.setOn(true);
-        radio.setStationQuantity(2);
         radio.setCurrentStation(1);
         int stationBeforePrev = radio.getCurrentStation();
         radio.changePrevStation();
@@ -45,8 +41,7 @@ class RadioTest {
     @Test
     public void shouldChangeNextAfterMaxStation() {
         radio.setOn(true);
-        radio.setStationQuantity(15);
-        radio.setCurrentStation(14);
+        radio.setCurrentStation(8);
         int maxStationBeforeNext = 0;
         radio.changeNextStation();
         assertEquals(maxStationBeforeNext, radio.getCurrentStation());
