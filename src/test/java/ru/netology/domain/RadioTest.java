@@ -10,14 +10,15 @@ class RadioTest {
     @Test
     public void shouldCheckSetStationQuantity() {
         radio.setOn(true);
-        assertEquals(9, radio.getStationQuantity());
+        int expected = radio.getStationQuantity();
+        assertEquals(expected, radio.getStationQuantity());
     }
 
     @Test
     public void shouldCheckMaxCurrentStation() {
         radio.setOn(true);
         int maxCurrentStation = radio.getStationQuantity() - 1;
-        assertEquals(maxCurrentStation, radio.getStationQuantity()-1);
+        assertEquals(maxCurrentStation, radio.getStationQuantity() - 1);
     }
 
     @Test
@@ -42,7 +43,7 @@ class RadioTest {
     public void shouldChangeNextAfterMaxStation() {
         radio.setOn(true);
         radio.setCurrentStation(8);
-        int maxStationBeforeNext = 0;
+        int maxStationBeforeNext = radio.getStartStation();
         radio.changeNextStation();
         assertEquals(maxStationBeforeNext, radio.getCurrentStation());
     }
@@ -51,7 +52,7 @@ class RadioTest {
     public void shouldChangePrevBeforeMinStation() {
         radio.setOn(true);
         radio.setCurrentStation(0);
-        int minStationAfterNext = radio.getStationQuantity()-1;
+        int minStationAfterNext = radio.getMaxStation();
         radio.changePrevStation();
         assertEquals(minStationAfterNext, radio.getCurrentStation());
     }
