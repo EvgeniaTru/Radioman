@@ -8,18 +8,65 @@ class RadioTest {
     Radio radio = new Radio(9);
 
     @Test
+    public void shouldCheckMinStationQuantity() {
+        Radio radio = new Radio();
+        radio.setStationQuantity(0);
+        assertEquals(10, radio.getStationQuantity());
+    }
+
+    @Test
+    public void shouldSetStationQuantity() {
+        radio.setStationQuantity(15);
+        assertEquals(15, radio.getStationQuantity());
+    }
+
+    @Test
+    public void shouldSetNonValidCurrentStation() {
+        radio.setCurrentStation(-1);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    public void shouldSetNotExistedCurrentStation() {
+        radio.setCurrentStation(10);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    public void shouldSetCurrentStation() {
+        radio.setCurrentStation(4);
+        assertEquals(4, radio.getCurrentStation());
+    }
+
+    @Test
+    public void shouldSetNonValidCurrentVolume() {
+        radio.setOn(true);
+        radio.setCurrentVolume(-1);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldSetNotExistedCurrentVolume() {
+        radio.setOn(true);
+        radio.setCurrentVolume(101);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldSetCurrentVolume() {
+        radio.setOn(true);
+        radio.setCurrentVolume(34);
+        assertEquals(34, radio.getCurrentVolume());
+    }
+
+
+    @Test
     public void shouldCheckSetStationQuantity() {
         radio.setOn(true);
         int expected = radio.getStationQuantity();
         assertEquals(expected, radio.getStationQuantity());
     }
 
-    @Test
-    public void shouldCheckMaxCurrentStation() {
-        radio.setOn(true);
-        int maxCurrentStation = radio.getStationQuantity() - 1;
-        assertEquals(maxCurrentStation, radio.getStationQuantity() - 1);
-    }
 
     @Test
     public void shouldChangeNextStation() {
