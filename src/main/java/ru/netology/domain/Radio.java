@@ -45,7 +45,7 @@ public class Radio {
     }
 
     public void setStationQuantity(int stationQuantity) {
-        if (stationQuantity > 0) {
+        if (stationQuantity > startStation) {
             this.stationQuantity = stationQuantity;
         }
     }
