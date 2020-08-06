@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Radio {
     private int currentStation;
-    private int startStation = 0;
+    private int startStation;
     private int stationQuantity = 10;
     private int maxStation = stationQuantity - 1;
     private int maxVolume = 100;
